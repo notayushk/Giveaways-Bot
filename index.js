@@ -50,22 +50,22 @@ client.on('message', (message) => {
     if (command === 'edit') {
         const messageID = args[0];
         client.giveawaysManager.edit(messageID, {
-            addTime: 5000,
-            newWinnerCount: 3,
-            newPrize: 'New Prize!'
+            addTime: ms(args[0]),
+            newWinnerCount: parseInt(args[1]) ,
+            newPrize: 'args.slice(2).join(' ')'
         }).then(() => {
             // Here, we can calculate the time after which we are sure that the lib will update the giveaway
             const numberOfSecondsMax = client.giveawaysManager.options.updateCountdownEvery / 1000;
-            message.channel.send('Success! Giveaway will updated in less than ' + numberOfSecondsMax + ' seconds.');
+            message.channel.send('Giveaway will updated in less than ' + numberOfSecondsMax + ' seconds.');
         }).catch(() => {
-            message.channel.send('No giveaway found for ' + messageID + ', please check and try again');
+            message.channel.send('I couldn't find any giveaway on that message id.');
         });
     }
 
     if (command === 'delete') {
         const messageID = args[0];
         client.giveawaysManager.delete(messageID).then(() => {
-            message.channel.send('Success! Giveaway deleted!');
+            message.channel.send('Giveaway deleted!');
         }).catch(() => {
             message.channel.send('No giveaway found for ' + messageID + ', please check and try again');
         });
@@ -76,7 +76,7 @@ client.on('message', (message) => {
         client.giveawaysManager.end(messageID).then(() => {
             message.channel.send('Success! Giveaway ended!');
         }).catch(() => {
-            message.channel.send('I couldn't find any giveaway on that mess');
+            message.channel.send('I couldn't find any giveaway on that message id');
         });
     }
 });
