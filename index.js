@@ -81,4 +81,4 @@ client.on('message', (message) => {
     }
 });
 
-client.login(settings.token);
+client.login(config.Token);
