@@ -76,7 +76,7 @@ client.on('message', (message) => {
         client.giveawaysManager.end(messageID).then(() => {
             message.channel.send('Success! Giveaway ended!');
         }).catch(() => {
-            message.channel.send('No giveaway found for ' + messageID + ', please check and try again');
+            message.channel.send('I couldn't find any giveaway on that mess');
         });
     }
 });
