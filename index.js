@@ -19,6 +19,9 @@ const manager = new GiveawaysManager(client, {
 client.giveawaysManager = manager;
 client.commands = new discord.Collection();
 client.aliases = new discord.Collection();
+["command", "events"].forEach(handler => {
+  require(`./handlers/${handler}`)(client);
+});
 client.on('ready', () => {
     console.log('I\'m ready!');
     client.user.setActivity('giveaways', ({
