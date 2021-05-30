@@ -1,10 +1,4 @@
 const { readdirSync } = require("fs");
-
-const ascii = require("ascii-table");
-
-// Create a new Ascii table
-let table = new ascii("Commands");
-table.setHeading("Command", "Load status");
 module.exports = (client) => {
     // Read every commands subfolder
     readdirSync(__dirname.replace("\handlers", "\commands")).forEach(dir => {
