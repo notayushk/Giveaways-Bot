@@ -27,16 +27,7 @@ client.aliases = new discord.Collection();
 client.on('message', (message) => {
     const ms = require('ms');
     const args = message.content.slice(settings.prefix.length).trim().split(/ +/g);
-    const command = args.shift().toLowerCase();
-if (command === 'delete') {
-        const messageID = args[0];
-        client.giveawaysManager.delete(messageID).then(() => {
-            message.channel.send('Giveaway deleted!');
-        }).catch(() => {
-            message.channel.send('No giveaway found for ' + messageID + ', please check and try again');
-        });
-    }
-    
+    const command = args.shift().toLowerCase();    
     if (command === 'end') {
         const messageID = args[0];
         client.giveawaysManager.end(messageID).then(() => {
