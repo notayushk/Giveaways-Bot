@@ -22,12 +22,7 @@ client.aliases = new discord.Collection();
 ["command", "events"].forEach(handler => {
   require(`./handlers/${handler}`)(client);
 });
-client.on('ready', () => {
-    console.log('I\'m ready!');
-    client.user.setActivity('giveaways', ({
-     Type: "PLAYING" 
-}));
-});
+
 
 client.on('message', (message) => {
     const ms = require('ms');
