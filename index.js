@@ -37,14 +37,7 @@ client.on('message', (message) => {
         })
     }
 
-    if (command === 'reroll') {
-        const messageID = args[0];
-        client.giveawaysManager.reroll(messageID).then(() => {
-            message.channel.send('Giveaway rerolled!');
-        }).catch(() => {
-            message.channel.send('I couldn't find any giveaway on that message id');
-        });
-    }
+
 
     if (command === 'edit') {
         const messageID = args[0];
