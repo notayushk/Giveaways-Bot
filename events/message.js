@@ -1,24 +1,8 @@
-const db = require("quick.db")
-const { addexp } = require("../handlers/xp.js");
-const { ownerID, default_prefix } = require("../config.json");
-const { badwords } = require("../data.json") 
-let cooldown = {}
-
 module.exports.run = async (client, message) => {
   if (message.author.bot || !message.guild) return;
-  addexp(message); //Add XP to the user profile
 
-/* LINK AND SWEAR WORDS CHECKER */
-if(!message.member.hasPermission("ADMINISTRATOR")) {
-  if(is_url(message.content)) {
-    return message.channel.send("You are not allowed to send links here.")
-  } else if(is_swear(message.content)) {
-    return message.channel.send("You are not allowed to use swear words in server.")
-  }
-}
 
-  let prefix = db.get(`prefix_${message.guild.id}`);
-  if (prefix === null) prefix = default_prefix;
+  let prefix = default_prefix;
   if (!message.content.startsWith(prefix)) return;
   if (!message.member) message.member = await message.guild.members.fetch(message);
 
@@ -26,11 +10,6 @@ if(!message.member.hasPermission("ADMINISTRATOR")) {
   const cmd = args.shift().toLowerCase();
 
   if (cmd.length === 0) return;
-  let cmdx = db.get(`cmd_${message.guild.id}`)
-  if (cmdx) {
-    let cmdy = cmdx.find(x => x.name === cmd)
-    if (cmdy) message.channel.send(cmdy.responce)
-  }
 
   let command = client.commands.get(cmd);
   if (!command) command = client.commands.get(client.aliases.get(cmd));
@@ -64,14 +43,4 @@ if(!message.member.hasPermission("ADMINISTRATOR")) {
   cooldown[message.author.id][command.name] = Date.now() + command.cooldown;
 
   if (command) command.run(client, message, args);
-}
-
-
-//-------------------------------------------- F U N C T I O N ------------------------------------------
-function is_url(str) {
-return /(https|http):\/\/[\S]+/gi.test(str) ? true : false
-}
-
-function is_swear(string) {
-  return new RegExp(`\\b(?:${badwords.join("|")})\\b`, "gi").test(string) ? true : false
 }
