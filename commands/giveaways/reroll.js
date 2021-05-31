@@ -8,11 +8,12 @@ authorPermission: [MANAGE_GUILD],
 aliases: [gstart,start],
 description: "start a giveaway",
 run: async(message,args) => {
-client.giveawaysManager.start(message.channel, {
-            time: ms(args[0]),
-            winnerCount: parseInt(args[1]),
-            prize: args.slice(2).join(' ')
-        }
+const messageID = args[0];
+        client.giveawaysManager.reroll(messageID).then(() => {
+            message.channel.send('Giveaway rerolled!');
+        }).catch(() => {
+            message.channel.send('I couldn't find any giveaway on that message id');
+        });
 }
 
     
