@@ -22,20 +22,4 @@ client.aliases = new discord.Collection();
 ["command", "events"].forEach(handler => {
   require(`./handlers/${handler}`)(client);
 });
-
-
-client.on('message', (message) => {
-    const ms = require('ms');
-    const args = message.content.slice(settings.prefix.length).trim().split(/ +/g);
-    const command = args.shift().toLowerCase();    
-    if (command === 'end') {
-        const messageID = args[0];
-        client.giveawaysManager.end(messageID).then(() => {
-            message.channel.send('Success! Giveaway ended!');
-        }).catch(() => {
-            message.channel.send('I couldn't find any giveaway on that message id');
-        });
-    }
-});
-
 client.login(config.Token);
