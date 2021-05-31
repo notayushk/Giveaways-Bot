@@ -13,6 +13,6 @@
   "dependencies": {
     "discord-giveaways": "^4.5.1",
     "discord.js": "^12.5.3",
-    "discord.js-pagination": "^1.0.3"
+    "ms": "^2.0.3"
   }
 }
