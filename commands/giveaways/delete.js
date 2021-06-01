@@ -1,12 +1,12 @@
 module.exports = {
-name: "giveaway",
-usage: "g!giveaway 1d 1 nitro",
+name: "delete",
+usage: "g!delete «message id»",
 ownerOnly: false, 
 cooldown: 10000,
 botPermission: [],
 authorPermission: [MANAGE_GUILD],
-aliases: [gstart,start],
-description: "start a giveaway",
+aliases: [gdelete],
+description: "delete a giveaway",
 run: async(client,message,args) => {
 const messageID = args[0];
         client.giveawaysManager.delete(messageID).then(() => {
