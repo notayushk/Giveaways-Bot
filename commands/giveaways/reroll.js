@@ -1,12 +1,12 @@
 module.exports = {
-name: "giveaway",
-usage: "g!giveaway 1d 1 nitro",
+name: "reroll",
+usage: "g!reroll <message id>",
 ownerOnly: false, 
 cooldown: 10000,
 botPermission: [],
 authorPermission: [MANAGE_GUILD],
-aliases: [gstart,start],
-description: "start a giveaway",
+aliases: [greroll],
+description: "reroll a giveaway",
 run: async(message,args) => {
 const messageID = args[0];
         client.giveawaysManager.reroll(messageID).then(() => {
