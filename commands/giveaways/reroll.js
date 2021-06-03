@@ -7,7 +7,7 @@ botPermission: [],
 authorPermission: [MANAGE_GUILD],
 aliases: [greroll],
 description: "reroll a giveaway",
-run: async(message,args) => {
+run: async(client,message,args) => {
 const messageID = args[0];
         client.giveawaysManager.reroll(messageID).then(() => {
             message.channel.send('Giveaway rerolled!');
