@@ -1,12 +1,12 @@
 module.exports = {
-name: "giveaway",
-usage: "g!giveaway 1d 1 nitro",
+name: "help",
+usage: "g!help",
 ownerOnly: false, 
 cooldown: 10000,
 botPermission: [],
 authorPermission: [MANAGE_GUILD],
-aliases: [gstart,start],
-description: "start a giveaway",
+aliases: [],
+description: "my help command",
 run: async(message,args) => {
  if (args[0]) {
       const command = await client.commands.get(args[0]);
