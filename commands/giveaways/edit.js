@@ -1,7 +1,8 @@
 module.exports = {
 name: "edit",
 usage: "g!edit <message id> 1d 3 nitro",
-ownerOnly: false, 
+ownerOnly: false,
+category: "giveaways",
 cooldown: 10000,
 botPermission: [],
 authorPermission: [MANAGE_GUILD],
