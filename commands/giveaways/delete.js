@@ -1,6 +1,7 @@
 module.exports = {
 name: "delete",
 usage: "g!delete «message id»",
+category: "giveaways",
 ownerOnly: false, 
 cooldown: 10000,
 botPermission: [],
