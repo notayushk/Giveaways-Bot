@@ -1,7 +1,8 @@
 module.exports = {
   name: "ping",
   category: "info",
-  description: "Get bot latency ",
+  description: "Get bot ping ",
+  category: "others",
   usage: "ping",
   run: (client, message) => {
     message.channel.send(`**Pong** ${client.ws.ping} ms `);
